@@ -97,16 +97,13 @@
       {% else %}
         {% for item in cart.items %}
           <li class="cart_item {% if forloop.last %}last_cart_item{% endif %}">
-            <p class="mm-counter">
-              <span class="icon-minus minus"></span><input type="number" min="0" class="quantity" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" data-line-id="{{ forloop.index }}" readonly /><span class="icon-plus plus"></span>
-            </p>
             <a href="{{ item.url }}">
               {% if item.image %}
                 <div class="cart_image">
                   <img src="{{ item | img_url: '410x' }}" alt="{{ item.title | escape }}" />
                 </div>
               {% endif %}
-              <div class="item_info">
+              <div class="item_info" style="width: 100%;">
                 {{ item.product.title }}
                 {% unless item.product.has_only_default_variant or item.variant.title contains "Title" %}
                   {% for option in item.product.options %}
@@ -127,8 +124,13 @@
                 	{% endunless %}
                   {% endfor %}
                 {% endif %}
-                <div class="price">
-                  <span class="money">$$$$${{ item.price | money }}</span>
+                <div class="price" style="position: relative; height: 40px; line-height: 40px; margin-top: 1em;">
+                  <span class="money">{{ item.price | money }}</span>
+                  <p class="mm-counter">
+                    <span class="icon-minus minus"></span>
+                    <input type="number" min="0" class="quantity" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" data-line-id="{{ forloop.index }}" readonly />
+                    <span class="icon-plus plus"></span>
+                  </p>
                 </div>
               </div>
             </a>
