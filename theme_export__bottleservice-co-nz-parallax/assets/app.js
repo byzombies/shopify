@@ -935,11 +935,6 @@ var cart = {
         $.each(cart.items, function(index, item) {
           var line_id = index + 1;
           cart_items_html += '<li class="cart_item">' +
-            '<p class="mm-counter">' +
-              '<span class="icon-minus minus"></span>' +
-              '<input type="number" min="0" class="quantity" name="updates[]" id="updates_' + item.id + '" value="' + item.quantity +'"  data-line-id="' + line_id +'" readonly />' +
-              '<span class="icon-plus plus"></span>' +
-            '</p>' +
             '<a href="' + item.url +'">';
           if (item.image) {
             cart_items_html += '<div class="cart_image">' +
@@ -957,7 +952,11 @@ var cart = {
             });
           }*/
 
-          cart_items_html += '<div class="price"><span class="money">' + Shopify.formatMoney(item.price, $cart.data('money-format')) + '</span></div></div></a></li>';
+          cart_items_html += '<div class="price"><span class="money">' + Shopify.formatMoney(item.price, $cart.data('money-format')) + '</span><p class="mm-counter">' +
+              '<span class="icon-minus minus"></span>' +
+              '<input type="number" min="0" class="quantity" name="updates[]" id="updates_' + item.id + '" value="' + item.quantity +'"  data-line-id="' + line_id +'" readonly />' +
+              '<span class="icon-plus plus"></span>' +
+            '</p></div></div></a></li>';
         });
 
         cart_items_html += '<li class="mm-label">' +
