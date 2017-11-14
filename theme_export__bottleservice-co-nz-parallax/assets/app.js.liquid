@@ -1064,7 +1064,7 @@ var cart = {
             });
           }*/
 
-          cart_items_html += '<div class="price" style="position: relative; height: 40px; line-height: 40px;"><span class="money">' + Shopify.formatMoney(item.price, $cart.data('money-format')) + '</span><p class="mm-counter" style="margin: 0; padding-top: 12px; top: 0; right: 0;">' +
+          cart_items_html += '<div class="price" style="position: relative; height: 40px; line-height: 40px; margin-top: 1em;"><span class="money">' + Shopify.formatMoney(item.price, $cart.data('money-format')) + '</span><p class="mm-counter" style="margin: 0; padding-top: 12px; top: 0; right: 0;">' +
               '<span class="icon-minus minus"></span>' +
               '<input type="number" min="0" class="quantity" name="updates[]" id="updates_' + item.id + '" value="' + item.quantity +'"  data-line-id="' + line_id +'" readonly />' +
               '<span class="icon-plus plus"></span>' +
