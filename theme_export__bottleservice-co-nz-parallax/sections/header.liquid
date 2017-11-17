@@ -97,7 +97,12 @@
       {% else %}
         {% for item in cart.items %}
           <li class="cart_item {% if forloop.last %}last_cart_item{% endif %}">
-            <a href="{{ item.url }}">
+              {% if item.url contains "-1?" and item.product.tags contains "Subscription" %}
+                {{item.product.tags}}
+                <a href="{{ item.url | replace: "-1?", "?" }}">
+              {% else %}
+                <a href="{{ item.url }}">
+              {% endif%}
               {% if item.image %}
                 <div class="cart_image">
                   <img src="{{ item | img_url: '410x' }}" alt="{{ item.title | escape }}" />
@@ -112,7 +117,6 @@
                     {% endunless %}
                   {% endfor %}
                 {% endunless %}
-
                 {% if item.properties %}
                   {% for p in item.properties %}
                 	{% unless p.last == blank or p.first == 'discount_percentage' or p.first == 'subscription_id' or p.first == 'shipping_interval_frequency' or p.first == 'shipping_interval_unit_type'%}
