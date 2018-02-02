@@ -98,7 +98,6 @@
         {% for item in cart.items %}
           <li class="cart_item {% if forloop.last %}last_cart_item{% endif %}">
               {% if item.url contains "-1?" and item.product.tags contains "Subscription" %}
-                {{item.product.tags}}
                 <a href="{{ item.url | replace: "-1?", "?" }}">
               {% else %}
                 <a href="{{ item.url }}">
